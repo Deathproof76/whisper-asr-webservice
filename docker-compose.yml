@@ -18,13 +18,13 @@ services:
       - 9000:9000
     volumes:
       - ./app:/app/app
-      - cache-pip:/root/.cache/pip
-      - cache-poetry:/root/.cache/poetry
-      - cache-whisper:/root/.cache/whisper
-      - cache-faster-whisper:/root/.cache/faster_whisper
+#      - cache-pip:/root/.cache/pip
+#      - cache-poetry:/root/.cache/poetry
+#      - cache-whisper:/root/.cache/whisper
+#      - cache-faster-whisper:/root/.cache/faster_whisper
 
-volumes:
-  cache-pip:
-  cache-poetry:
-  cache-whisper:
-  cache-faster-whisper:
+#volumes:
+#  cache-pip:
+#  cache-poetry:
+#  cache-whisper:
+#  cache-faster-whisper:
