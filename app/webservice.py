@@ -10,13 +10,9 @@ from fastapi.responses import StreamingResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.docs import get_swagger_ui_html
 from whisper import tokenizer
+from .faster_whisper.core import transcribe, language_detection
 
-ASR_ENGINE = os.getenv("ASR_ENGINE", "openai_whisper")
-if ASR_ENGINE == "faster_whisper":
-    from .faster_whisper.core import transcribe, language_detection
-else:
-    from .openai_whisper.core import transcribe, language_detection
-
+ASR_ENGINE = "faster_whisper"
 SAMPLE_RATE=16000
 LANGUAGE_CODES=sorted(list(tokenizer.LANGUAGES.keys()))
 
