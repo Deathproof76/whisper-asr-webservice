@@ -9,15 +9,12 @@ import whisper
 from .utils import model_converter, ResultWriter, WriteTXT, WriteSRT, WriteVTT, WriteTSV, WriteJSON
 from faster_whisper import WhisperModel
 
-model_name= os.getenv("ASR_MODEL", "base")
+model_name= os.getenv("ASR_MODEL", "small")
 model_path = os.path.join("/root/.cache/faster_whisper", model_name)
 model_converter(model_name, model_path)
+model_size = "small"
+model = WhisperModel(model_path, device="cuda", compute_type="float16")
 
-if torch.cuda.is_available():
-    model = WhisperModel(model_path, device="cuda", compute_type="float32")
-else:
-    model = WhisperModel(model_path, device="cpu", compute_type="int8")
-model_lock = Lock()
 
 def transcribe(
     audio,
